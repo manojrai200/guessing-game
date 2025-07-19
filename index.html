@@ -1,18 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="./styles/main.css">
-    <script src="./js/guessing-game.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Guessing Game</title>
+  <link rel="stylesheet" href="./styles/main.css" />
 </head>
 <body>
-    <h1>My Guessing Game</h1>
-    <h3>Previous Guesses</h3>
-    <input type="text" id="guess">
-    <button class="btn">Submit Guess</button>
-    <button class="btn">Play Again</button>
-    <button class="btn">Hint</button>    
+  <div class="game-container">
+    <h1>🎯 Number Guessing Game</h1>
+    <p>Guess a number between <strong>1</strong> and <strong>100</strong>.</p>
+
+    <input type="number" id="playerInput" placeholder="Enter your guess" min="1" max="100" />
+
+    <div class="buttons">
+      <button id="submitBtn">Submit Guess</button>
+      <button id="hintBtn">Hint</button>
+      <button id="resetBtn">Play Again</button>
+    </div>
+
+    <div id="message" class="message-area">Let's play!</div>
+    <div id="attempts">Attempts Left: 5</div>
+  </div>
+
+  <script src="./js/guessing-game.js"></script>
 </body>
 </html>

@@ -1,6 +1,7 @@
 
 
 
+
 /* 
 
 Write your guess-game code here! Don't forget to look at the test specs as a guide. You can run the specs
@@ -87,3 +88,102 @@ class Game{
 function newGame (){
     return new Game();
 }
+
+
+
+// ::::Interactive:::
+// let game=newGame()
+
+// let input=document.getElementById('playerInput')
+// let message=document.getElementsByClassName('message-area')
+// let past=document.getElementById('message-area')
+
+
+// document.getElementById('submitBtn').addEventListener('click',function(){
+//     const guess=parseInt(input.value)
+
+//    try{
+//      const result=game.playersGuessSubmission(guess)
+//     message.textContent=result;
+//     past.textContent=`Past Guess: ${game.pastGuesses.join(', ')}`
+//    }catch(err){
+//     message.textContent=err;
+//    }
+//    input.value='                                        '
+    
+// })
+
+// document.getElementById('hintBtn').addEventListener('click',function(){
+//    const hinting= game.provideHint()
+//    message.textContent=`Hints are:${hinting.join(', ')}`
+// })
+
+// document.getElementById('resetBtn').addEventListener('click',function(){
+//     game=newGame()
+//     message.textContent='Game is Reset & You can play again!'
+//     past.textContent=''
+//     input.value=''
+// })
+
+
+                                
+
+let game = newGame();
+
+const input = document.getElementById("playerInput");
+const submitBtn = document.getElementById("submitBtn");
+const hintBtn = document.getElementById("hintBtn");
+const resetBtn = document.getElementById("resetBtn");
+const message = document.getElementById("message");
+const attemptsDisplay = document.getElementById("attempts");
+
+// Helper to update attempts
+function updateAttempts() {
+  const left = 5 - game.pastGuesses.length;
+  attemptsDisplay.textContent = `Attempts Left: ${left}`;
+}
+
+// Display the guess result
+function displayResult(result) {
+  message.textContent = result;
+  updateAttempts();
+
+  if (result === 'You Win!' || result === 'You Lose.') {
+    submitBtn.disabled = true;
+    hintBtn.disabled = true;
+    input.disabled = true;
+  }
+}
+
+// Submit guess
+submitBtn.addEventListener("click", () => {
+  let guess = Number(input.value);
+  try {
+    const result = game.playersGuessSubmission(guess);
+    displayResult(result);
+  } catch (e) {
+    message.textContent = e;
+  }
+  input.value = '';
+  input.focus();
+});
+
+// Provide hint
+hintBtn.addEventListener("click", () => {
+  const hint = game.provideHint();
+  message.textContent = `One of these is correct: ${hint.join(', ')}`;
+});
+
+// Reset game
+resetBtn.addEventListener("click", () => {
+  game = newGame();
+  message.textContent = "New game started! Guess a number between 1 and 100.";
+  updateAttempts();
+  input.disabled = false;
+  submitBtn.disabled = false;
+  hintBtn.disabled = false;
+  input.value = "";
+  input.focus();
+});
+
+updateAttempts();
