@@ -88,45 +88,7 @@ class Game{
 function newGame (){
     return new Game();
 }
-
-
-
-// ::::Interactive:::
-// let game=newGame()
-
-// let input=document.getElementById('playerInput')
-// let message=document.getElementsByClassName('message-area')
-// let past=document.getElementById('message-area')
-
-
-// document.getElementById('submitBtn').addEventListener('click',function(){
-//     const guess=parseInt(input.value)
-
-//    try{
-//      const result=game.playersGuessSubmission(guess)
-//     message.textContent=result;
-//     past.textContent=`Past Guess: ${game.pastGuesses.join(', ')}`
-//    }catch(err){
-//     message.textContent=err;
-//    }
-//    input.value='                                        '
-    
-// })
-
-// document.getElementById('hintBtn').addEventListener('click',function(){
-//    const hinting= game.provideHint()
-//    message.textContent=`Hints are:${hinting.join(', ')}`
-// })
-
-// document.getElementById('resetBtn').addEventListener('click',function(){
-//     game=newGame()
-//     message.textContent='Game is Reset & You can play again!'
-//     past.textContent=''
-//     input.value=''
-// })
-
-
-                                
+                           
 
 let game = newGame();
 
